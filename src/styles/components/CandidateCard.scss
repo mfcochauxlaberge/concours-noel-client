@@ -1,0 +1,17 @@
+.candidate_card {
+  //   background: red;
+  display: grid;
+  grid-template-columns: 100px auto;
+
+  img {
+    height: 100px;
+    width: 100px;
+  }
+
+  .candidate_info {
+    display: grid;
+    grid-gap: 10px;
+    padding: 10px;
+    align-content: start;
+  }
+}
