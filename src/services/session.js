@@ -20,7 +20,7 @@ class SessionProvider extends Component {
           isAdmin: this.state.isAdmin,
 
           verifyCode: ({ code }) => {
-            fetch(`http://192.168.1.150:8081/codes/${code}`)
+            fetch(`http://192.168.2.150:8081/codes/${code}`)
               .then(data => data.json())
               .then(body => {
                 if (body['error']) {

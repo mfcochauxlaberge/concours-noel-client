@@ -12,7 +12,7 @@ class Candidates extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://192.168.1.150:8081/candidates')
+    fetch('http://192.168.2.150:8081/candidates')
       .then(data => data.json())
       .then(body => {
         this.setState({

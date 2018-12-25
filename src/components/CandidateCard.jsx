@@ -14,7 +14,7 @@ class CandidateCard extends React.Component {
         className={CandidateCardStyles['candidate_card']}
       >
         <img
-          src={`http://192.168.1.150:8081/images/${this.props.candidate.image}`}
+          src={`http://192.168.2.150:8081/images/${this.props.candidate.image}`}
           alt={
             this.props.candidate.name + ' ' + this.props.candidate.description
           }

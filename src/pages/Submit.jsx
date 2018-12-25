@@ -106,7 +106,7 @@ class Submit extends React.Component {
 
     this.updateFinalImage()
 
-    fetch(`http://192.168.1.150:8081/candidates`, {
+    fetch(`http://192.168.2.150:8081/candidates`, {
       method: 'POST',
       body: JSON.stringify({
         author: this.state.author,

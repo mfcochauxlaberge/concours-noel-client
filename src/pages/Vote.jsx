@@ -14,7 +14,7 @@ class Vote extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://192.168.1.150:8081/categories')
+    fetch('http://192.168.2.150:8081/categories')
       .then(data => data.json())
       .then(body => {
         this.setState(_ => {
@@ -23,7 +23,7 @@ class Vote extends React.Component {
           }
         })
 
-        fetch('http://192.168.1.150:8081/candidates')
+        fetch('http://192.168.2.150:8081/candidates')
           .then(data => data.json())
           .then(body => {
             this.setState(_ => {
@@ -32,7 +32,7 @@ class Vote extends React.Component {
               }
             })
 
-            fetch('http://192.168.1.150:8081/votes/code1')
+            fetch('http://192.168.2.150:8081/votes/code1')
               .then(data => data.json())
               .then(body => {
                 this.setState(state => {
@@ -136,7 +136,7 @@ class Vote extends React.Component {
       })
     })
 
-    fetch(`http://192.168.1.150:8081/votes/code1`, {
+    fetch(`http://192.168.2.150:8081/votes/code1`, {
       method: 'PUT',
       body: JSON.stringify({
         votes: this.state.votes,
