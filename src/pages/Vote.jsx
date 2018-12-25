@@ -138,9 +138,7 @@ class Vote extends React.Component {
 
     fetch(`http://192.168.2.150:8081/votes/code1`, {
       method: 'PUT',
-      body: JSON.stringify({
-        votes: this.state.votes,
-      }),
+      body: JSON.stringify(this.state.votes),
       headers: new Headers({
         'Content-Type': 'application/json',
       }),
