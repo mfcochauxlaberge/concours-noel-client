@@ -2,27 +2,79 @@ import React from 'react'
 
 // import AppStyles from './styles/components/App.scss'
 
+import CandidateCard from '../components/CandidateCard.jsx'
+
 class Winners extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      winners: [],
+      info: {},
+    }
+  }
+
+  componentDidMount() {
+    Promise.all([
+      fetch('http://192.168.2.150:8081/categories'),
+      fetch('http://192.168.2.150:8081/candidates'),
+      fetch('http://192.168.2.150:8081/winners'),
+    ])
+      .then(data => {
+        return Promise.all([data[0].json(), data[1].json(), data[2].json()])
+      })
+      .then(data => {
+        let categories = {}
+        let candidates = {}
+        let winners = []
+
+        Object.keys(data[0].categories).map(i => {
+          let category = data[0].categories[i]
+          categories[category.id] = category
+        })
+        Object.keys(data[1].candidates).map(i => {
+          let candidate = data[1].candidates[i]
+          candidates[candidate.id] = candidate
+        })
+        Object.keys(data[2]).map(category => {
+          let candidateID = data[2][category].candidate
+          if (candidateID !== 'none') {
+            winners.push({
+              category: categories[category],
+              candidate: candidates[candidateID],
+            })
+          }
+        })
+
+        this.setState(_ => {
+          return { winners }
+        })
+      })
+      .catch(err => {
+        console.log('Error while fetching winners:', err)
+      })
+  }
+
   render() {
     return (
       <React.Fragment>
         <h2>Gagnants</h2>
-        <p>
-          Ac felis donec et odio pellentesque diam volutpat. Mi quis hendrerit
-          dolor magna eget. Gravida in fermentum et sollicitudin ac orci
-          phasellus. Ornare aenean euismod elementum nisi quis. Bibendum est
-          ultricies integer quis auctor elit sed vulputate. Fermentum posuere
-          urna nec tincidunt praesent semper feugiat. Ultrices mi tempus
-          imperdiet nulla. Porta lorem mollis aliquam ut porttitor leo. Turpis
-          egestas maecenas pharetra convallis posuere morbi. Egestas sed sed
-          risus pretium quam vulputate dignissim suspendisse in. Id diam
-          maecenas ultricies mi eget mauris pharetra. Sed euismod nisi porta
-          lorem mollis aliquam ut porttitor leo. Egestas egestas fringilla
-          phasellus faucibus scelerisque eleifend. Elementum sagittis vitae et
-          leo duis ut diam. Curabitur vitae nunc sed velit dignissim. Cum sociis
-          natoque penatibus et magnis dis. Donec et odio pellentesque diam
-          volutpat commodo sed egestas egestas.
-        </p>
+        {this.state.winners.length === 0 && <p>Pas de gagnants encore.</p>}
+        {this.state.winners.length > 0 && (
+          <React.Fragment>
+            {this.state.winners.map(winner => {
+              return (
+                <React.Fragment key={Math.random()}>
+                  <h3>{winner.category.name}</h3>
+                  <CandidateCard
+                    key={winner.candidate.id}
+                    candidate={winner.candidate}
+                  />
+                </React.Fragment>
+              )
+            })}
+          </React.Fragment>
+        )}
       </React.Fragment>
     )
   }
