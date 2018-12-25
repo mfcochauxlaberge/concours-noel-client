@@ -28,12 +28,12 @@ class Submit extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <h2>Submit</h2>
+        <h2>Participer</h2>
         <form onSubmit={this.submit}>
           <input
             type="text"
             id="author"
-            placeholder="Author"
+            placeholder="Auteurs"
             value={this.state.author}
             onChange={this.onChange}
           />
@@ -66,7 +66,7 @@ class Submit extends React.Component {
               />
             </React.Fragment>
           )}
-          <input type="submit" value="Submit" disabled={this.state.disabled} />
+          <input type="submit" value="Envoyer" disabled={this.state.disabled} />
         </form>
       </React.Fragment>
     )

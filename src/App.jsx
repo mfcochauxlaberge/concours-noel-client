@@ -19,7 +19,7 @@ class App extends React.Component {
           <nav>
             <ul>
               <li>
-                <Link to="/candidates">Candidates</Link>
+                <Link to="/candidates">Œuvres</Link>
               </li>
               <SessionContext.Consumer>
                 {context => {
@@ -27,10 +27,10 @@ class App extends React.Component {
                     return (
                       <React.Fragment>
                         <li>
-                          <Link to="/submit">Submit</Link>
+                          <Link to="/submit">Participer</Link>
                         </li>
                         <li>
-                          <Link to="/vote">Vote</Link>
+                          <Link to="/vote">Voter</Link>
                         </li>
                       </React.Fragment>
                     )
@@ -38,7 +38,7 @@ class App extends React.Component {
                 }}
               </SessionContext.Consumer>
               <li>
-                <Link to="/winners">Winners</Link>
+                <Link to="/winners">Gagnants</Link>
               </li>
               <SessionContext.Consumer>
                 {context => {
@@ -46,14 +46,14 @@ class App extends React.Component {
                     return (
                       <li>
                         <Link to="#" onClick={context.forgetCode}>
-                          Log out
+                          Se déconnecter
                         </Link>
                       </li>
                     )
                   } else {
                     return (
                       <li>
-                        <Link to="/login">Log in</Link>
+                        <Link to="/login">Se connecter</Link>
                       </li>
                     )
                   }
@@ -73,11 +73,11 @@ class App extends React.Component {
           <nav>
             <ul>
               <li>
-                By <a href="https://mfcl.io">Marc-François Cochaux-Laberge</a>
+                Par <a href="https://mfcl.io">Marc-François Cochaux-Laberge</a>
               </li>
               <li>
                 <a href="https://github.com/mfcochauxlaberge/concours-noel-client">
-                  Source code
+                  Code source
                 </a>
               </li>
             </ul>

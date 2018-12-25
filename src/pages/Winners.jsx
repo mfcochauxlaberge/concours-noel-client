@@ -6,7 +6,7 @@ class Winners extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <h2>Winners</h2>
+        <h2>Gagnants</h2>
         <p>
           Ac felis donec et odio pellentesque diam volutpat. Mi quis hendrerit
           dolor magna eget. Gravida in fermentum et sollicitudin ac orci

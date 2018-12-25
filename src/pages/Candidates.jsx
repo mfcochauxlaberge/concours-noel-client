@@ -27,7 +27,7 @@ class Candidates extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <h2>Candidates</h2>
+        <h2>Œuvres</h2>
         {this.state.candidates.length === 0 && <p>No candidates.</p>}
         {this.state.candidates.length > 0 && (
           <React.Fragment>

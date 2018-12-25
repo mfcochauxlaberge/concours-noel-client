@@ -18,7 +18,7 @@ class Login extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <h2>Login</h2>
+        <h2>Se connecter</h2>
         <SessionContext.Consumer>
           {context => {
             if (context.loggedIn) {
@@ -35,7 +35,7 @@ class Login extends React.Component {
                   />
                   <input
                     type="submit"
-                    value="Log in"
+                    value="Se connecter"
                     disabled={this.state.disabled}
                   />
                 </form>

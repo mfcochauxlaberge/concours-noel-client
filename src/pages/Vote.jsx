@@ -72,7 +72,7 @@ class Vote extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <h2>Vote</h2>
+        <h2>Voter</h2>
         <form onSubmit={this.vote}>
           {this.state.categories.map(category => {
             return (
@@ -100,7 +100,7 @@ class Vote extends React.Component {
               </React.Fragment>
             )
           })}
-          <input type="submit" value="Vote" disabled={this.state.disabled} />
+          <input type="submit" value="Voter" disabled={this.state.disabled} />
         </form>
       </React.Fragment>
     )
